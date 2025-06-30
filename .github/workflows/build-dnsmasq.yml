@@ -6,7 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Clone dnsmasq
-      run: git clone https://github.com/dnsmasq/dnsmasq.git
+      run: git clone git@github.com:dnsmasq/dnsmasq.git
     - name: Build dnsmasq
       run: |
         cd dnsmasq
