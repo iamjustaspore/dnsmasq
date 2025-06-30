@@ -5,8 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Clone dnsmasq
+      run: git clone https://github.com/dnsmasq/dnsmasq.git
     - name: Build dnsmasq
       run: |
+        cd dnsmasq
         sudo apt-get update
         sudo apt-get install build-essential
         ./configure
