@@ -1,0 +1,22 @@
+name: Build dnsmasq for macOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Build dnsmasq
+        run: |
+          make
+
+      - name: Upload compiled binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: dnsmasq-macos
+          path: dnsmasq
