@@ -1,22 +1,13 @@
-name: Build dnsmasq for macOS
-
-on:
-  workflow_dispatch:
-
+name: Build dnsmasq
+on: [push]
 jobs:
   build:
-    runs-on: macos-latest
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Build dnsmasq
-        run: |
-          make
-
-      - name: Upload compiled binary
-        uses: actions/upload-artifact@v3
-        with:
-          name: dnsmasq-macos
-          path: dnsmasq
+    - uses: actions/checkout@v3
+    - name: Build dnsmasq
+      run: |
+        sudo apt-get update
+        sudo apt-get install build-essential
+        ./configure
+        make
